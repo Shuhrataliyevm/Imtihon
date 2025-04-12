@@ -8,14 +8,6 @@ interface NetworkStatus {
     type: 'wifi' | 'cellular' | 'none';
 }
 
-interface ProfileData {
-    totalDebt: number;
-    delayedPayments: number;
-    totalClients: number;
-    accountBalance: number;
-    monthlyPaymentStatus: string;
-}
-
 const LoadingScreen = () => (
     <div className="loading-screen">
         <div className="loading-spinner"></div>
