@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { IoMail, IoLockClosed, IoEyeOutline, IoEyeOffOutline, IoPersonOutline, IoPhonePortraitOutline } from 'react-icons/io5';
-import '../../ui/Register.scss';
+import '../../styles/Register.scss';
 
 const Register = () => {
     const navigate = useNavigate();

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { IoWifi, IoBatteryFull, IoBatteryHalf, IoBatteryDead } from "react-icons/io5";
-import "../../ui/Profile.scss";
+import "../../styles/Profile.scss";
 
 interface NetworkStatus {
     online: boolean;
