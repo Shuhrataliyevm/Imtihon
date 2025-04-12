@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { IoMail, IoLockClosed, IoEyeOutline, IoEyeOffOutline, IoWifi, IoBatteryFull, IoBatteryHalf, IoBatteryDead } from 'react-icons/io5';
-import './Login.scss';
+import '../../ui/Login.scss';
 
 interface NetworkStatus {
     online: boolean;

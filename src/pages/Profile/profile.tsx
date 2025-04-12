@@ -1,10 +1,6 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import {
-    IoWalletOutline, IoPersonOutline, IoEyeOutline, IoEyeOffOutline,
-    IoBatteryFull, IoBatteryHalf, IoBatteryDead, IoWifi
-} from 'react-icons/io5';
-import "./Profile.scss";
+import { IoWifi, IoBatteryFull, IoBatteryHalf, IoBatteryDead } from "react-icons/io5";
+import "../../ui/Profile.scss";
 
 interface NetworkStatus {
     online: boolean;
@@ -27,10 +23,7 @@ const LoadingScreen = () => (
 );
 
 const Profile = () => {
-    const navigate = useNavigate();
-    const username = localStorage.getItem("username") || "Foydalanuvchi";
     const [currentTime, setCurrentTime] = useState("");
-    const [isAmountVisible, setIsAmountVisible] = useState(true);
     const [isLoading, setIsLoading] = useState(true);
     const [batteryStatus, setBatteryStatus] = useState({ level: 1, charging: false });
     const [networkStatus, setNetworkStatus] = useState<NetworkStatus>({
@@ -38,14 +31,6 @@ const Profile = () => {
         strength: 4,
         type: 'wifi'
     });
-
-    const profileData: ProfileData = {
-        totalDebt: 135214200,
-        delayedPayments: 26,
-        totalClients: 151,
-        accountBalance: 300000,
-        monthlyPaymentStatus: "To'lov qilingan"
-    };
 
     useEffect(() => {
         const updateTime = () => {
@@ -97,10 +82,6 @@ const Profile = () => {
             clearTimeout(loadingTimeout);
         };
     }, []);
-
-    const formatCurrency = (amount: number): string => {
-        return new Intl.NumberFormat("uz-UZ").format(amount);
-    };
 
     const renderBatteryIcon = () => {
         const batteryPercent = Math.round(batteryStatus.level * 100);
@@ -167,15 +148,12 @@ const Profile = () => {
                 <button className="nav-item active">
                     <span>Asosiy</span>
                 </button>
-
-                <button className="nav-item" >
+                <button className="nav-item">
                     <span>Mijozlar</span>
                 </button>
-
                 <button className="nav-item">
                     <span>Hisobot</span>
                 </button>
-
                 <button className="nav-item">
                     <span>Sozlama</span>
                 </button>

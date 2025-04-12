@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { IoMail, IoLockClosed, IoEyeOutline, IoEyeOffOutline, IoPersonOutline, IoPhonePortraitOutline } from 'react-icons/io5';
-import StatusBar from '../../components/StatusBar/StatusBar';
-import './Register.scss';
+import '../../ui/Register.scss';
 
 const Register = () => {
     const navigate = useNavigate();
@@ -31,12 +30,12 @@ const Register = () => {
         setError('');
 
         if (formData.password !== formData.confirmPassword) {
-            setError('Пароллар мос келмади');
+            setError('Parollar mos kelmadi');
             return;
         }
 
         if (!formData.phoneNumber.match(/^\+998[0-9]{9}$/)) {
-            setError('Телефон рақами нотўғри форматда (+998xxxxxxxxx)');
+            setError('Telefon raqami noto‘g‘ri formatda (+998xxxxxxxxx)');
             return;
         }
 
@@ -59,7 +58,7 @@ const Register = () => {
             const data = await response.json();
 
             if (!response.ok) {
-                throw new Error(data.message || 'Рўйхатдан ўтишда хатолик');
+                throw new Error(data.message || 'Ro‘yxatdan o‘tishda xatolik');
             }
 
             navigate('/login');
@@ -72,43 +71,42 @@ const Register = () => {
 
     return (
         <div className="register-container">
-            <StatusBar />
             <div className="register-content">
                 <div className="register-left">
                     <div className="logo-container">
-                        <img src="/icons/newlogo.svg" alt="Logo" />
+                        <img src="/images/logo book.jpg" alt="Logo" />
                     </div>
-                    <h2>Рўйхатдан ўтиш</h2>
+                    <h2>Ro‘yxatdan o‘tish</h2>
 
                     <form onSubmit={handleSubmit}>
                         <div className="form-group">
-                            <label>Логин</label>
+                            <label>Login</label>
                             <input
                                 type="text"
                                 name="username"
                                 value={formData.username}
                                 onChange={handleChange}
-                                placeholder="Логинингизни киритинг"
+                                placeholder="Loginingizni kiriting"
                                 required
                             />
                             <IoMail className="icon" />
                         </div>
 
                         <div className="form-group">
-                            <label>Тўлиқ исм</label>
+                            <label>To‘liq ism</label>
                             <input
                                 type="text"
                                 name="fullName"
                                 value={formData.fullName}
                                 onChange={handleChange}
-                                placeholder="Тўлиқ исмингизни киритинг"
+                                placeholder="To‘liq ismingizni kiriting"
                                 required
                             />
                             <IoPersonOutline className="icon" />
                         </div>
 
                         <div className="form-group">
-                            <label>Телефон рақами</label>
+                            <label>Telefon raqami</label>
                             <input
                                 type="tel"
                                 name="phoneNumber"
@@ -116,20 +114,20 @@ const Register = () => {
                                 onChange={handleChange}
                                 placeholder="+998xxxxxxxxx"
                                 pattern="\+998[0-9]{9}"
-                                title="Формат: +998xxxxxxxxx"
+                                title="Format: +998xxxxxxxxx"
                                 required
                             />
                             <IoPhonePortraitOutline className="icon" />
                         </div>
 
                         <div className="form-group">
-                            <label>Пароль</label>
+                            <label>Parol</label>
                             <input
                                 type={showPassword ? "text" : "password"}
                                 name="password"
                                 value={formData.password}
                                 onChange={handleChange}
-                                placeholder="Паролингизни киритинг"
+                                placeholder="Parolingizni kiriting"
                                 required
                             />
                             <IoLockClosed className="icon" style={{ right: '45px' }} />
@@ -147,13 +145,13 @@ const Register = () => {
                         </div>
 
                         <div className="form-group">
-                            <label>Паролни тасдиқланг</label>
+                            <label>Parolni tasdiqlang</label>
                             <input
                                 type={showConfirmPassword ? "text" : "password"}
                                 name="confirmPassword"
                                 value={formData.confirmPassword}
                                 onChange={handleChange}
-                                placeholder="Паролни қайта киритинг"
+                                placeholder="Parolni qayta kiriting"
                                 required
                             />
                             <IoLockClosed className="icon" style={{ right: '45px' }} />
@@ -176,26 +174,25 @@ const Register = () => {
                             {isLoading ? (
                                 <>
                                     <span className="loading-spinner"></span>
-                                    Кутинг...
+                                    Kuting...
                                 </>
                             ) : (
-                                'Рўйхатдан ўтиш'
+                                'Ro‘yxatdan o‘tish'
                             )}
                         </button>
 
                         <div className="login-link">
-                            <p>Аллақачон рўйхатдан ўтганмисиз?</p>
-                            <Link to="/login">Кириш</Link>
+                            <p>Loginga qaytish <Link to="/login">Login</Link></p>
                         </div>
                     </form>
                 </div>
 
                 <div className="register-right">
                     <div className="register-image">
-                        <img src="/images/register-illustration.svg" alt="Register" />
+                        <img src="/images/new book picturwes.jpg" alt="Login" />
                     </div>
-                    <h1>Хуш келибсиз!</h1>
-                    <p>Рўйхатдан ўтиш учун маълумотларингизни киритинг</p>
+                    <h1>Xush kelibsiz!</h1>
+                    <p>Ro‘yxatdan o‘tish uchun ma’lumotlaringizni kiriting</p>
                 </div>
             </div>
         </div>
