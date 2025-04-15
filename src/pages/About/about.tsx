@@ -1,11 +1,21 @@
 import { useState, useEffect } from 'react';
-import { IoWifi, IoBatteryFull, IoBatteryHalf, IoBatteryDead } from "react-icons/io5";
-import "../../styles/Profile.scss";
+import {
+    IoBatteryFull, IoBatteryHalf, IoBatteryDead, IoWifi
+} from 'react-icons/io5';
+import "../../styles/home.scss";
 
 interface NetworkStatus {
     online: boolean;
     strength: number;
     type: 'wifi' | 'cellular' | 'none';
+}
+
+interface ProfileData {
+    totalDebt: number;
+    delayedPayments: number;
+    totalClients: number;
+    accountBalance: number;
+    monthlyPaymentStatus: string;
 }
 
 const LoadingScreen = () => (
@@ -14,7 +24,7 @@ const LoadingScreen = () => (
     </div>
 );
 
-const Profile = () => {
+const About = () => {
     const [currentTime, setCurrentTime] = useState("");
     const [isLoading, setIsLoading] = useState(true);
     const [batteryStatus, setBatteryStatus] = useState({ level: 1, charging: false });
@@ -23,6 +33,14 @@ const Profile = () => {
         strength: 4,
         type: 'wifi'
     });
+
+    const profileData: ProfileData = {
+        totalDebt: 135214200,
+        delayedPayments: 26,
+        totalClients: 151,
+        accountBalance: 300000,
+        monthlyPaymentStatus: "To'lov qilingan"
+    };
 
     useEffect(() => {
         const updateTime = () => {
@@ -124,7 +142,7 @@ const Profile = () => {
     if (isLoading) return <LoadingScreen />;
 
     return (
-        <div className="profile-container">
+        <div className="Home-container">
             <div className="status-bar">
                 <span className="time">{currentTime}</span>
                 <div className="icons">
@@ -137,15 +155,23 @@ const Profile = () => {
                 </div>
             </div>
             <nav className="navigation-menu">
-                <button className="nav-item active">
-                    <span>Asosiy</span>
+                <button onClick={() => window.location.href = "/home"} className="nav-item">
+                    <img src="/public/images/home.png" alt="#" />
+                    <span>Home</span>
                 </button>
-                <button className="nav-item">
+
+                <button onClick={() => window.location.href = "/about"} className="nav-item" >
+                    <span>About</span>
+                </button>
+
+                <button className="nav-item" >
                     <span>Mijozlar</span>
                 </button>
+
                 <button className="nav-item">
                     <span>Hisobot</span>
                 </button>
+
                 <button className="nav-item">
                     <span>Sozlama</span>
                 </button>
@@ -154,4 +180,4 @@ const Profile = () => {
     );
 };
 
-export default Profile;
+export default About;

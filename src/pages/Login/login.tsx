@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { IoMail, IoLockClosed, IoEyeOutline, IoEyeOffOutline, IoWifi, IoBatteryFull, IoBatteryHalf, IoBatteryDead } from 'react-icons/io5';
-import '../../styles/Login.scss';
+import { IoEyeOutline, IoEyeOffOutline, IoWifi, IoBatteryFull, IoBatteryHalf, IoBatteryDead, IoPhonePortraitOutline } from 'react-icons/io5';
+import '../../styles/login.scss';
+import { setTokens } from '../../utils/auth';
+import { toast } from 'sonner';
 
 interface NetworkStatus {
     online: boolean;
@@ -19,6 +21,7 @@ interface NetworkConnection {
     removeEventListener: (type: string, listener: () => void) => void;
 }
 
+
 interface NavigatorWithConnection extends Navigator {
     connection?: NetworkConnection;
 }
@@ -35,7 +38,8 @@ interface NavigatorWithBattery extends Navigator {
 const Login = () => {
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
-        login: '',
+        name: '',
+        phone: '',
         password: ''
     });
     const [showPassword, setShowPassword] = useState(false);
@@ -149,20 +153,20 @@ const Login = () => {
         }));
     };
 
-    const handleSubmit = async (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        setError('');
         setIsLoading(true);
+        setError('');
 
         try {
-            const response = await fetch('https://nasiya.takedaservice.uz/api/auth/login', {
+            const response = await fetch('https://s-libraries.uz/api/v1/auth/login/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    login: formData.login,
-                    hashed_password: formData.password
+                    phone: formData.phone,
+                    password: formData.password
                 })
             });
 
@@ -172,15 +176,20 @@ const Login = () => {
                 throw new Error(data.message || 'Login yoki parol xato!');
             }
 
-            localStorage.setItem('token', data.accessToken);
-            localStorage.setItem('username', formData.login);
-            navigate('/profile');
+            setTokens(data.access, data.refresh);
+            localStorage.setItem('phone', formData.phone);
+
+            toast.success('Muvaffaqiyatli kirdingiz!');
+            navigate('/home');
         } catch (err) {
+            console.error('Login error:', err);
+            toast.error((err as Error).message || 'Xatolik yuz berdi');
             setError((err as Error).message);
         } finally {
             setIsLoading(false);
         }
     };
+
 
     const renderBatteryIcon = () => {
         const batteryPercent = Math.round(batteryStatus.level * 100);
@@ -220,10 +229,9 @@ const Login = () => {
                         width: '2px',
                         marginRight: '1px'
                     }}
-                />
+                />,
             );
-        }
-
+        };
         return <div className="signal-bars">{bars}</div>;
     };
 
@@ -263,21 +271,23 @@ const Login = () => {
                     </p>
 
                     <form onSubmit={handleSubmit}>
+
                         <div className="form-group">
-                            <label>Login</label>
+                            <label>phone</label>
                             <input
-                                type="text"
-                                name="login"
-                                value={formData.login}
+                                type="phone"
+                                name="phone"
+                                value={formData.phone}
                                 onChange={handleChange}
-                                placeholder="Loginingizni kiriting"
+                                placeholder="+998901234567"
                                 required
                             />
-                            <IoMail className="icon" />
+                            <IoPhonePortraitOutline className="icon" />
+
                         </div>
 
                         <div className="form-group">
-                            <label>Parol</label>
+                            <label>password</label>
                             <input
                                 type={showPassword ? "text" : "password"}
                                 name="password"
@@ -286,18 +296,17 @@ const Login = () => {
                                 placeholder="Parolingizni kiriting"
                                 required
                             />
-                            <IoLockClosed className="icon" style={{ right: '45px' }} />
-                            {showPassword ? (
-                                <IoEyeOffOutline
-                                    className="icon"
-                                    onClick={() => setShowPassword(false)}
-                                />
-                            ) : (
-                                <IoEyeOutline
-                                    className="icon"
-                                    onClick={() => setShowPassword(true)}
-                                />
-                            )}
+                                {showPassword ? (
+                                    < IoEyeOffOutline
+                                        className="icon"
+                                        onClick={() => setShowPassword(false)}
+                                    />
+                                ) : (
+                                    <IoEyeOutline
+                                        className="icon"
+                                        onClick={() => setShowPassword(true)}
+                                    />
+                                )}
                         </div>
 
                         {error && <div className="error-message">{error}</div>}

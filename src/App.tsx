@@ -1,9 +1,12 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import Login from './pages/Login/login';
-import Profile from './pages/Profile/profile';
+import About from './pages/About/about';
 import Register from './pages/Register/register';
-
+import Login from './pages/Login/login';
+import Error from './pages/Error/error';
+import Home from './pages/Home/home';
+import LibraryDetail from './pages/LibraryDetail/libraryDetail';
+import LibraryProfile from './pages/LibraryProfile/libraryProfile';
 const queryClient = new QueryClient();
 
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
@@ -14,6 +17,7 @@ const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
     return <>{children}</>;
 };
 
+
 const App = () => {
 
     const content = (
@@ -22,14 +26,46 @@ const App = () => {
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
                 <Route
-                    path="/profile"
+                    path="/home"
                     element={
                         <ProtectedRoute>
-                            <Profile />
+                            <Home />
                         </ProtectedRoute>
                     }
                 />
-                <Route path="*" element={<Navigate to="/profile" />} />
+                <Route
+                    path="/about"
+                    element={
+                        <ProtectedRoute>
+                            <About />
+                        </ProtectedRoute>
+                    }
+                />
+                <Route
+                    path="/librarydetail"
+                    element={
+                        <ProtectedRoute>
+                            <LibraryDetail />
+                        </ProtectedRoute>
+                    }
+                />
+                <Route
+                    path="/libraryprofile"
+                    element={
+                        <ProtectedRoute>
+                            <LibraryProfile />
+                        </ProtectedRoute>
+                    }
+                />
+                <Route
+                    path="/error"
+                    element={
+                        <ProtectedRoute>
+                            <Error />
+                        </ProtectedRoute>
+                    }
+                />
+                <Route path="*" element={<Navigate to="/error" />} />
             </Routes>
         </QueryClientProvider>
     );

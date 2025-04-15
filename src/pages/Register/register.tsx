@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { IoMail, IoLockClosed, IoEyeOutline, IoEyeOffOutline, IoPersonOutline, IoPhonePortraitOutline } from 'react-icons/io5';
-import '../../styles/Register.scss';
+import { IoLockClosed, IoEyeOutline, IoEyeOffOutline, IoPhonePortraitOutline, IoPersonOutline } from 'react-icons/io5';
+import { toast } from 'sonner';
+import '../../styles/register.scss';
 
 const Register = () => {
     const navigate = useNavigate();
@@ -30,39 +31,52 @@ const Register = () => {
         setError('');
 
         if (formData.password !== formData.confirmPassword) {
+            toast.error('Parollar mos kelmadi');
             setError('Parollar mos kelmadi');
             return;
         }
 
         if (!formData.phoneNumber.match(/^\+998[0-9]{9}$/)) {
-            setError('Telefon raqami noto‘g‘ri formatda (+998xxxxxxxxx)');
+            toast.error('Telefon raqami notogri formatda (+998xxxxxxxxx)');
+            setError('Telefon raqami notogri formatda (+998xxxxxxxxx)');
             return;
         }
 
         setIsLoading(true);
 
         try {
-            const response = await fetch('https://nasiya.takedaservice.uz/api/auth/register', {
+            const response = await fetch('https://s-libraries.uz/api/v1/auth/register-library/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    username: formData.username,
-                    password: formData.password,
-                    full_name: formData.fullName,
-                    phone_number: formData.phoneNumber
+                    user: {
+                        password: formData.password,
+                        name: formData.fullName,
+                        phone: formData.phoneNumber
+                    },
+                    library: {
+                        address: "Tashkent",
+                        social_media: [],
+                        can_rent_books: true,
+                        latitude: "0",
+                        longitude: "0"
+                    }
                 })
             });
 
             const data = await response.json();
 
             if (!response.ok) {
-                throw new Error(data.message || 'Ro‘yxatdan o‘tishda xatolik');
+                throw new Error(data.message || 'Royxatdan otishda xatolik');
             }
 
+            toast.success('Muvaffaqiyatli royxatdan otdingiz!');
             navigate('/login');
         } catch (err) {
+            console.error('Registration error:', err);
+            toast.error((err as Error).message || 'Royxatdan otishda xatolik yuz berdi');
             setError((err as Error).message);
         } finally {
             setIsLoading(false);
@@ -76,30 +90,17 @@ const Register = () => {
                     <div className="logo-container">
                         <img src="/images/logo book.jpg" alt="Logo" />
                     </div>
-                    <h2>Ro‘yxatdan o‘tish</h2>
+                    <h2>Ro'yxatdan o'tish</h2>
 
                     <form onSubmit={handleSubmit}>
                         <div className="form-group">
-                            <label>Login</label>
-                            <input
-                                type="text"
-                                name="username"
-                                value={formData.username}
-                                onChange={handleChange}
-                                placeholder="Loginingizni kiriting"
-                                required
-                            />
-                            <IoMail className="icon" />
-                        </div>
-
-                        <div className="form-group">
-                            <label>To‘liq ism</label>
+                            <label>To'liq ism</label>
                             <input
                                 type="text"
                                 name="fullName"
                                 value={formData.fullName}
                                 onChange={handleChange}
-                                placeholder="To‘liq ismingizni kiriting"
+                                placeholder="To'liq ismingizni kiriting"
                                 required
                             />
                             <IoPersonOutline className="icon" />
@@ -177,7 +178,7 @@ const Register = () => {
                                     Kuting...
                                 </>
                             ) : (
-                                'Ro‘yxatdan o‘tish'
+                                'Royxatdan otish'
                             )}
                         </button>
 
@@ -192,7 +193,7 @@ const Register = () => {
                         <img src="/images/new book picturwes.jpg" alt="Login" />
                     </div>
                     <h1>Xush kelibsiz!</h1>
-                    <p>Ro‘yxatdan o‘tish uchun ma’lumotlaringizni kiriting</p>
+                    <p>Ro'yxatdan o'tish uchun ma'lumotlaringizni kiriting</p>
                 </div>
             </div>
         </div>
