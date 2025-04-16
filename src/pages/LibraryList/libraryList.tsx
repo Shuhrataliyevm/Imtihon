@@ -1,6 +1,6 @@
 import Header from "../Header/header"
 import Footer from "../Footer/footer"
-const libraryProfile = () => {
+const libraryList = () => {
     return (
         <div>
             <Header />
@@ -9,4 +9,4 @@ const libraryProfile = () => {
     )
 }
 
-export default libraryProfile
+export default libraryList

@@ -1,0 +1,205 @@
+.alotofBook {
+    width: 100%;
+    height: 660px;
+    padding: 0;
+    margin: 0;
+    background-color: rgba(218, 216, 216, 0.211);
+
+    .alotofBook-data {
+        h4 {
+            font-size: 2rem;
+            text-align: center;
+            margin-top: 20px;
+            position: relative;
+            left: -300px;
+        }
+
+        p {
+            position: relative;
+            left: -356px;
+        }
+    }
+
+    .alotofBook-btn{
+        position: absolute;
+        right: 250px;
+
+        button {
+            cursor: pointer;
+            border: none;
+            background-color: rgb(23, 33, 228);
+        }
+    }
+}
+
+.alotofBook {
+    padding: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &__data {
+        text-align: center;
+        margin-bottom: 1.5rem;
+
+        h4 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        p {
+            color: #666;
+            font-size: 1rem;
+        }
+    }
+
+    &__btn {
+        margin-bottom: 2rem;
+
+        button {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 0.7rem 1.5rem;
+            background-color: #4ecdc4;
+            border: none;
+            border-radius: 8px;
+            color: #fff;
+            font-weight: 500;
+            cursor: pointer;
+            transition: 0.3s ease;
+
+            img {
+                width: 20px;
+                height: 20px;
+            }
+
+            &:hover {
+                background-color: #38bfb5;
+            }
+        }
+    }
+
+    &__carousel-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        width: 100%;
+        max-width: 1000px;
+        padding: 0 1rem;
+        position: relative;
+    }
+
+    &__carousel {
+        width: 100%;
+        overflow: hidden;
+        border-radius: 16px;
+
+        .carousel-inner {
+            width: 100%;
+        }
+
+        .carousel-item {
+            img {
+                width: 100%;
+                height: 400px;
+                object-fit: cover;
+                background-color: #f2f2f2;
+            }
+
+            .carousel-caption {
+                position: absolute;
+                bottom: 15px;
+                left: 15px;
+                background-color: rgba(84, 82, 82, 0.422);
+                color: #fff;
+                padding: 12px 16px;
+                border-radius: 8px;
+                max-width: 90%;
+                text-align: left;
+
+                h5 {
+                    font-size: 1.2rem;
+                    margin-bottom: 4px;
+                    color: #fff;
+                }
+
+                p {
+                    font-size: 0.95rem;
+                    margin: 0;
+                    color: #fff;
+                }
+            }
+        }
+    }
+
+    &__control {
+        font-size: 2rem;
+        background-color: #20b9af;
+        border: none;
+        color: white;
+        border-radius: 50%;
+        width: 45px;
+        height: 45px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: 0.3s ease;
+        position: absolute;
+        top: 50%;
+        z-index: 1;
+
+        &:hover {
+            background-color: #3bbdb3;
+        }
+
+        &.prev {
+            left: 10px;
+            transform: translateY(-50%);
+        }
+
+        &.next {
+            right: 10px;
+            transform: translateY(-50%);
+        }
+    }
+
+    @media (max-width: 768px) {
+        &__carousel-wrapper {
+            flex-direction: column;
+        }
+
+        &__control {
+            width: 40px;
+            height: 40px;
+            font-size: 1.5rem;
+        }
+
+        &__carousel .carousel-item img {
+            height: 300px;
+        }
+
+        &__carousel .carousel-caption {
+            font-size: 0.85rem;
+        }
+    }
+
+    .alotofBook__carousel-wrapper{
+        position: relative;
+        top: -50px;
+
+        .alotofBook__control{
+            position: relative;
+            left: -10px;
+            top: 20px;
+        }
+    }
+
+    .alotofBook__btn{
+        position: relative;
+        left: 250px;
+        top: -70px;
+    }
+}

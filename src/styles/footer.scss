@@ -1,0 +1,112 @@
+.footer {
+    color: #1a1919;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    position: relative;
+    top: 50px;
+
+    &__top {
+        display: flex;
+        flex-direction: column;
+        gap: 12rem;
+
+        @media (min-width: 768px) {
+            flex-direction: row;
+            justify-content: space-between;
+        }
+    }
+
+    &__about {
+        max-width: 400px;
+
+        .footer__logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #0b0c0c;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            font-size: 1rem;
+            color: #ccc;
+        }
+    }
+
+    &__sections {
+        display: flex;
+        flex-direction: column;
+        gap: 4rem;
+
+        @media (min-width: 768px) {
+            flex-direction: row;
+        }
+    }
+
+    &__column {
+        h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+
+            li {
+                margin-bottom: 0.5rem;
+
+                a,
+                span {
+                    color: #5f5b5b;
+                    text-decoration: none;
+                    font-size: 0.95rem;
+
+                    &:hover {
+                        color: #0638ea;
+                        transition: color 0.3s ease;
+                    }
+                }
+            }
+        }
+    }
+
+    .footer-image{
+        display: flex;
+        gap: 5px;
+        cursor: pointer;
+    }
+
+    &__bottom {
+        border-top: 1px solid #333;
+        padding-top: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+
+        @media (min-width: 768px) {
+            flex-direction: row;
+        }
+
+        p {
+            font-size: 0.9rem;
+            color: #888;
+        }
+
+        .footer__socials {
+            display: flex;
+            gap: 1rem;
+
+            a {
+                color: #ccc;
+                font-size: 1.2rem;
+
+                &:hover {
+                    color: #4ecdc4;
+                }
+            }
+        }
+    }
+}

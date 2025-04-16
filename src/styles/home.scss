@@ -1,101 +1,172 @@
 .Home-container {
     max-width: 1520px;
     margin: 0 auto;
-    padding: 20px;
     min-height: 100vh;
-    background: #f8fafc;
 
     @media (max-width: 768px) {
         padding: 16px;
     }
 
-    .header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 5px 50px;
-
-        .text-logo{
-            h1{
-                color: #0000ff;
-                font-size: 3rem;
-            }
-        }
+    .search {
+        width: 100%;
+        height: 400px;
+        background-color: rgba(218, 216, 216, 0.211);
     }
 
-    .header-links {
-        display: flex;
-        align-items: center;
-        gap: 3rem;
-
-        a {
-            text-decoration: none;
-            color: rgba(62, 61, 61, 0.7);
-        }
-    }
-
-    .header-btn {
-        display: flex;
-        gap: 1rem;
-
-        button {
-            width: 90px;
-            height: 38px;
-            border: none;
-            border-radius: 18px;
-            background-color: white;
-            color: rgb(8, 7, 7);
-            box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
-            cursor: pointer;
-            position: relative; // BU YERDA!
-            overflow: hidden; // ::before chiqib ketmasin
-
-            span {
-                position: relative;
-                z-index: 2;
-            }
-
-            &::before {
-                content: "";
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background-color: blue;
-                border-radius: 18px;
-                transform: scale(0);
-                transition: transform 0.3s ease-in-out;
-                z-index: 1;
-            }
-
-            &:hover::before {
-                transform: scale(1);
-            }
-
-            &:hover span {
-                color: white;
-            }
-        }
-    }
-
-    .search-data{
+    .search-data {
         display: flex;
         flex-direction: column;
         align-items: center;
         gap: 20px;
         position: relative;
         top: 70px;
+        padding: 0 20px;
 
-        h4{
+        h4 {
             font-size: 3rem;
             text-align: center;
+
+            @media (max-width: 768px) {
+                font-size: 2rem;
+            }
         }
-        p{
-            align-items: center;
+
+        p {
             font-size: 1.2rem;
             color: rgba(62, 61, 61, 0.7);
+            text-align: center;
+
+            @media (max-width: 768px) {
+                font-size: 1rem;
+            }
+        }
+
+        .input-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+
+            input {
+                width: 100%;
+                padding: 10px 40px;
+                font-size: 1rem;
+                border: 1px solid #ccc;
+                border-radius: 8px;
+                outline: none;
+            }
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            height: 42px;
+            border-radius: 8px;
+            font-size: 1rem;
+            background-color: #ccc;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            position: relative;
+            top: -45px;
+            left: 310px;
+            transition: background-color 0.3s ease;
+
+            &.active-btn {
+                background-color: blue;
+                cursor: pointer;
+            }
+        }
+
+        @media (max-width: 500px) {
+            button {
+                left: 0;
+                top: 10px;
+                position: static;
+                margin-top: 10px;
+            }
         }
     }
 
+    .Ezma {
+        .whatEzma {
+            text-align: center;
+            margin-top: 120px;
+
+            h5 {
+                font-size: 2rem;
+            }
+
+            p {
+                margin-top: 10px;
+            }
+        }
+
+        .question-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .questions {
+            width: 280px;
+            height: 200px;
+            text-align: center;
+            border: 1px solid #a59e9e44;
+            border-radius: 10px;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            background-color: #fff;
+
+            &:hover {
+                box-shadow: 0 12px 22px rgba(0, 0, 0, 0.12);
+
+                .question-bg {
+                    background-color: #2563eb;
+                }
+            }
+
+            .text {
+                margin-top: 20px;
+            }
+
+            .question {
+                .question-bg {
+                    width: 60px;
+                    height: 60px;
+                    background-color: #eef4ff;
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    transition: all 0.4s ease;
+                    margin: 0 auto;
+                }
+
+                img {
+                    width: 28px;
+                    height: 28px;
+                    transition: all 0.3s ease;
+                }
+            }
+
+            h5 {
+                font-size: 1.1rem;
+                color: #0f172a;
+                margin: 8px 0;
+            }
+
+            p {
+                font-size: 0.95rem;
+                color: #64748b;
+                line-height: 1.4;
+            }
+        }
+    }
+
+    .results-container{
+        cursor: pointer;
+    }
 }

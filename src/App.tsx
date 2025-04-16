@@ -5,8 +5,13 @@ import Register from './pages/Register/register';
 import Login from './pages/Login/login';
 import Error from './pages/Error/error';
 import Home from './pages/Home/home';
-import LibraryDetail from './pages/LibraryDetail/libraryDetail';
 import LibraryProfile from './pages/LibraryProfile/libraryProfile';
+import Footer from './pages/Footer/footer';
+import Header from './pages/Header/header';
+import LibraryList from './pages/LibraryList/libraryList';
+import AlotOfBook from './pages/AlotOfBook/alotofBook';
+import BookPage from './pages/BookPage/BookPage';
+import LibraryDetail from './pages/LibraryDetail/libraryDetail';
 const queryClient = new QueryClient();
 
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
@@ -26,7 +31,7 @@ const App = () => {
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
                 <Route
-                    path="/home"
+                    path="/"
                     element={
                         <ProtectedRoute>
                             <Home />
@@ -50,10 +55,50 @@ const App = () => {
                     }
                 />
                 <Route
+                    path="/librarylist"
+                    element={
+                        <ProtectedRoute>
+                            <LibraryList />
+                        </ProtectedRoute>
+                    }
+                />
+                <Route
+                    path="/bookpage"
+                    element={
+                        <ProtectedRoute>
+                            <BookPage />
+                        </ProtectedRoute>
+                    }
+                />
+                <Route
                     path="/libraryprofile"
                     element={
                         <ProtectedRoute>
                             <LibraryProfile />
+                        </ProtectedRoute>
+                    }
+                />
+                <Route
+                    path="/alotofbook"
+                    element={
+                        <ProtectedRoute>
+                            <AlotOfBook />
+                        </ProtectedRoute>
+                    }
+                />
+                <Route
+                    path="/footer"
+                    element={
+                        <ProtectedRoute>
+                            <Footer />
+                        </ProtectedRoute>
+                    }
+                />
+                <Route
+                    path="/header"
+                    element={
+                        <ProtectedRoute>
+                            <Header />
                         </ProtectedRoute>
                     }
                 />

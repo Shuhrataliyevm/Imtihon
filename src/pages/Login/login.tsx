@@ -173,14 +173,14 @@ const Login = () => {
             const data = await response.json();
 
             if (!response.ok) {
-                throw new Error(data.message || 'Login yoki parol xato!');
+                throw new Error(data.message || 'phone yoki password xato!');
             }
 
             setTokens(data.access, data.refresh);
             localStorage.setItem('phone', formData.phone);
 
             toast.success('Muvaffaqiyatli kirdingiz!');
-            navigate('/home');
+            navigate('/');
         } catch (err) {
             console.error('Login error:', err);
             toast.error((err as Error).message || 'Xatolik yuz berdi');

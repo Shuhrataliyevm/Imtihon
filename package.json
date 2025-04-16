@@ -12,9 +12,10 @@
   "dependencies": {
     "@hookform/resolvers": "^5.0.1",
     "@tanstack/react-query": "^5.69.0",
-    "antd": "^5.24.5",
+    "antd": "^5.24.7",
     "axios": "^1.8.4",
     "framer-motion": "^12.6.2",
+    "lucide-react": "^0.488.0",
     "query": "^0.2.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
@@ -24,7 +25,8 @@
     "react-toastify": "^11.0.5",
     "sass": "^1.86.0",
     "sonner": "^2.0.3",
-    "yup": "^1.6.1"
+    "yup": "^1.6.1",
+    "zustand": "^5.0.3"
   },
   "devDependencies": {
     "@eslint/js": "^9.21.0",
