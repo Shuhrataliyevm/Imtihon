@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { IoLockClosed, IoEyeOutline, IoEyeOffOutline, IoPhonePortraitOutline, IoPersonOutline } from 'react-icons/io5';
 import { toast } from 'sonner';
-import '../../styles/register.scss';
+import "../../styles/register.scss";
 const Register = () => {
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
