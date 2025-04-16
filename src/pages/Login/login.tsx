@@ -4,7 +4,6 @@ import { IoEyeOutline, IoEyeOffOutline, IoWifi, IoBatteryFull, IoBatteryHalf, Io
 import { setTokens } from '../../utils/auth';
 import { toast } from 'sonner';
 import '../../styles/login.scss';
-
 interface NetworkStatus {
     online: boolean;
     strength: number;
