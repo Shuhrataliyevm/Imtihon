@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { IoEyeOutline, IoEyeOffOutline, IoWifi, IoBatteryFull, IoBatteryHalf, IoBatteryDead, IoPhonePortraitOutline } from 'react-icons/io5';
-import '../../styles/login.scss';
 import { setTokens } from '../../utils/auth';
 import { toast } from 'sonner';
+import '../../styles/login.scss';
 
 interface NetworkStatus {
     online: boolean;
