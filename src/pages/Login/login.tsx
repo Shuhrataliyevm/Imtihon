@@ -1,4 +1,5 @@
-"use client"
+"use client";
+import React from 'react';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { IoEyeOutline, IoEyeOffOutline, IoWifi, IoBatteryFull, IoBatteryHalf, IoBatteryDead, IoPhonePortraitOutline } from 'react-icons/io5';

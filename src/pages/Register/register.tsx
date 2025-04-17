@@ -1,4 +1,5 @@
-"use client"
+"use client";
+import React from 'react';
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { IoLockClosed, IoEyeOutline, IoEyeOffOutline, IoPhonePortraitOutline, IoPersonOutline } from 'react-icons/io5';
