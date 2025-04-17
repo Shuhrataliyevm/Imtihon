@@ -1,10 +1,9 @@
 "use client"
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { IoLockClosed, IoEyeOutline, IoEyeOffOutline, IoPhonePortraitOutline, IoPersonOutline } from 'react-icons/io5';
-import { toast } from 'react-toastify';
-import './Register.scss';
-
+import { toast } from 'sonner';
+import "./register.scss";
 const Register = () => {
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
