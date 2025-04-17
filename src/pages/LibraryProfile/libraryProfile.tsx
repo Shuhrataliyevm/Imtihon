@@ -1,5 +1,6 @@
 import Header from "../Header/header"
 import Footer from "../Footer/footer"
+
 const libraryProfile = () => {
     return (
         <div>
@@ -9,4 +10,4 @@ const libraryProfile = () => {
     )
 }
 
-export default libraryProfile
+export default libraryProfile;

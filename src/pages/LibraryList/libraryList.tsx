@@ -9,4 +9,4 @@ const libraryList = () => {
     )
 }
 
-export default libraryList
+export default libraryList;

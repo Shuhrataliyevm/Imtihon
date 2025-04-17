@@ -166,7 +166,153 @@
         }
     }
 
-    .results-container{
+    .results-container {
         cursor: pointer;
+    }
+}
+
+.search-results {
+    background: #f9f9f9;
+    padding: 2rem;
+    border-radius: 12px;
+    margin-top: 1rem;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+    cursor: pointer;
+
+    .loading,
+    .error-message,
+    .no-results {
+        text-align: center;
+        font-size: 1.1rem;
+        color: #555;
+        padding: 2rem 0;
+    }
+
+    .results-container {
+        h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: #222;
+        }
+
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .book-card {
+            background-color: #fff;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+
+            &:hover {
+                transform: translateY(-5px);
+            }
+
+            .book-info {
+                h4 {
+                    font-size: 1.1rem;
+                    font-weight: 600;
+                    margin-bottom: 0.5rem;
+                    color: #2b2b2b;
+                }
+
+                .author,
+                .publisher {
+                    font-size: 0.95rem;
+                    color: #666;
+                }
+
+                .library-info {
+                    margin-top: 1rem;
+
+                    h5 {
+                        font-size: 1rem;
+                        font-weight: 600;
+                        margin-bottom: 0.5rem;
+                        color: #444;
+                    }
+
+                    .address {
+                        font-size: 0.95rem;
+                        margin-bottom: 0.5rem;
+                    }
+
+                    .availability {
+                        display: flex;
+                        gap: 1rem;
+                        align-items: center;
+                        margin-top: 0.5rem;
+
+                        .available {
+                            color: #28a745;
+                            font-weight: 600;
+                        }
+
+                        .unavailable {
+                            color: #dc3545;
+                            font-weight: 600;
+                        }
+
+                        .can-rent {
+                            background-color: #007bff;
+                            color: white;
+                            padding: 0.3rem 0.6rem;
+                            border-radius: 8px;
+                            font-size: 0.85rem;
+                            font-weight: 500;
+                        }
+                    }
+
+                    .library-actions {
+                        display: flex;
+                        gap: 1rem;
+                        margin-top: 1rem;
+
+                        a {
+                            display: flex;
+                            align-items: center;
+                            gap: 0.4rem;
+                            font-size: 0.9rem;
+                            font-weight: 500;
+                            text-decoration: none;
+                            padding: 0.4rem 0.8rem;
+                            border-radius: 8px;
+                            transition: background 0.3s ease;
+
+                            &.map-link {
+                                background-color: #f2f2f2;
+                                color: #333;
+
+                                &:hover {
+                                    background-color: #e2e2e2;
+                                }
+                            }
+
+                            &.telegram-link {
+                                background-color: #0088cc;
+                                color: white;
+
+                                &:hover {
+                                    background-color: #0071ad;
+                                }
+                            }
+
+                            .icon {
+                                width: 20px;
+                                height: 20px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }

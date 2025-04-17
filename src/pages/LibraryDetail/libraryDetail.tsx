@@ -49,7 +49,10 @@ const LibraryDetail = () => {
             <h1>Kitoblar</h1>
 
             {loading ? (
-                <p>Loading...</p>
+                <div className="loading-wrapper">
+                    <div className="ball-1"></div>
+                    <div className="ball-2"></div>
+                </div>
             ) : (
                 <>
                     {currentBooks.map((book) => (

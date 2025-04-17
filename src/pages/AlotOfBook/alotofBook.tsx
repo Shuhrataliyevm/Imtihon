@@ -1,4 +1,4 @@
-import '../../styles/alotofBook.scss';
+import "../../styles/alotofbook.scss";
 
 const AlotofBook = () => {
     return (
